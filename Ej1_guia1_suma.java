@@ -16,14 +16,14 @@ public class Ej1_guia1_suma {
      */
     public static void main(String[] args) {
         Scanner leer = new Scanner(System.in);
-    System.out.println("Ingrese un nÃºmero:");
+    System.out.println("Ingrese un número:");
     int numero, num1, num2;
     
     num1= leer.nextInt();
-    System.out.println("Ingrese otro nÃºmero:");
+    System.out.println("Ingrese otro número:");
     num2 = leer.nextInt();
     numero = num1 + num2;
-    System.out.println("El nÃºmero es:" + numero);
+    System.out.println("El número es:" + numero);
     }
     
 }
