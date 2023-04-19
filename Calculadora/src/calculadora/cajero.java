@@ -3,23 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pooej01;
+package calculadora;
 
 /**
  *
  * @author gcopes
  */
-import Entidad.Persona;
-public class POOEj01 {
+public class cajero {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Persona Persona1 = new Persona("Carlos",25,"argentino");
-        Persona Persona2 = new Persona("Lorena",18,"colombiana");
-        Persona1.getEdad();
+        Cuenta operacion1 =  new Cuenta();
+        operacion1.crearCuenta();
+        operacion1.retirar_dinero();
     }
     
 }

@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pooej01;
+package calculadora;
 
 /**
  *
  * @author gcopes
  */
-import Entidad.Persona;
-public class POOEj01 {
+public class distanciaPuntos {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Puntos punto1 = new Puntos();
+        punto1.crearPuntos();
+        System.out.println("La distancia entre los puntos es: " + punto1.distanciaPuntos() );
         
-        Persona Persona1 = new Persona("Carlos",25,"argentino");
-        Persona Persona2 = new Persona("Lorena",18,"colombiana");
-        Persona1.getEdad();
     }
     
 }

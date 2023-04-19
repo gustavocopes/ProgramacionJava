@@ -3,23 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pooej01;
+package geometria;
 
 /**
  *
  * @author gcopes
  */
-import Entidad.Persona;
-public class POOEj01 {
+public class AreaRectangulo {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Persona Persona1 = new Persona("Carlos",25,"argentino");
-        Persona Persona2 = new Persona("Lorena",18,"colombiana");
-        Persona1.getEdad();
+            Rectangulo rectangulo1 = new Rectangulo();
+            System.out.println("El area del rectángulo es: " + rectangulo1.calcular_area(4,6));
     }
     
 }

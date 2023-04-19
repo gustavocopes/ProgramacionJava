@@ -3,22 +3,20 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Enitdad;
+package Entidad;
 
 /**
  *
  * @author gcopes
  */
-//import Enitdad.Libro;
-public class Libro1 {
+import Entidad.Persona;
+public class POOEj01 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Libro libro1 = new Libro();
-        libro1.llenarLibro();
-        System.out.println(libro1);
+        // TODO code application logic here
     }
     
 }

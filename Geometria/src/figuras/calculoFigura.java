@@ -3,23 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package pooej01;
+package figuras;
 
 /**
  *
  * @author gcopes
  */
-import Entidad.Persona;
-public class POOEj01 {
+public class calculoFigura {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
-        Persona Persona1 = new Persona("Carlos",25,"argentino");
-        Persona Persona2 = new Persona("Lorena",18,"colombiana");
-        Persona1.getEdad();
+        Rectangulo figura1;
+        figura1 = new Rectangulo();//instancio mi objeto>> Rectangulo es mi clase, figura1 es mi objeto
+        figura1.crearRectangulo();
+        figura1.superficie();
+        figura1.perimetro();
+        figura1.dibujo();
     }
     
 }
