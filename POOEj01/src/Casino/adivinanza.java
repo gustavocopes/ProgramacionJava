@@ -17,6 +17,7 @@ public class adivinanza {
     public static void main(String[] args) {
         Juego adivinanza1= new Juego();
         adivinanza1.crearNumero();
+         System.out.flush();  
         adivinanza1.adivinarNumero();
     }
     

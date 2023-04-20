@@ -17,6 +17,7 @@ public class AreaRectangulo {
     public static void main(String[] args) {
             Rectangulo rectangulo1 = new Rectangulo();
             System.out.println("El area del rectángulo es: " + rectangulo1.calcular_area(4,6));
+           
     }
     
 }

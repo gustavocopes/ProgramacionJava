@@ -49,9 +49,9 @@ public class Empleado {
     }
     
     public void calcular_aumento(String nombre, int edad, float salario){
-        if(edad> 30){
-            System.out.println("El aumento salarial de " + nombre + "es: " + (salario * 1.10));
+        if(edad>= 30){
+            System.out.println("El aumento salarial de " + nombre + "es: " + (salario * 0.10));
         }
-        else System.out.println("El aumento salarial de " +  nombre + "es: " + (salario * 1.05));
+        else System.out.println("El aumento salarial de " +  nombre + "es: " + (salario * 0.05));
     }
 }

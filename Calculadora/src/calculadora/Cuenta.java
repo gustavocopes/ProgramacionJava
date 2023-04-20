@@ -41,21 +41,24 @@ public class Cuenta {
     }
     Scanner sc = new Scanner(System.in);
     public void crearCuenta(){
-        saldo = 100000;
+        saldo = 100;
         System.out.println("Ingrese el nombre del titular");
-        setTitular(sc.nextLine());
+        this.titular= sc.nextLine();
         System.out.println("Su saldo es: " + saldo);
     }
     
     public void retirar_dinero(){
         
+        do{
         System.out.println("Ingrese el monto que desea retirar: ");
-        float monto = sc.nextFloat();
+        float monto = sc.nextFloat(); // monto >> saldo
+        
         if(monto > saldo){
             System.out.println("No es posible entregar esa cantidad. Saldo insuficiente.");
         }
-        else
+        else{
             System.out.println("Transacción realizada su saldo actual es: " + (saldo - monto));
-            
+            saldo -= monto;}// monto = saldo
+        }while(saldo>0);
     }
 }
