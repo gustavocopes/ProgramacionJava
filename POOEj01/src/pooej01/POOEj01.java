@@ -9,7 +9,7 @@ package pooej01;
  *
  * @author gcopes
  */
-import Entidad.Persona;
+import Entidades.Persona;
 public class POOEj01 {
 
     /**

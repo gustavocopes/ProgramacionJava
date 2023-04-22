@@ -3,21 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Entidad;
+package pooej01;
 
 /**
  *
  * @author gcopes
  */
-public class aumentoSalarial {
+public class cajero {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Empleado trabajador1 = new Empleado();
-        trabajador1.calcular_aumento("Pepe", 22, 100000);
-
+new java.util.Scanner(System.in).nextLine();
     }
     
 }

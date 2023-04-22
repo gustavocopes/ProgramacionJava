@@ -4,7 +4,7 @@ y un constructor con todos los atributos pasados por parámetro y un constructor
 Crear un método para cargar un libro pidiendo los datos al usuario y luego 
 informar mediante otro método el número de ISBN, el título, el autor del libro y el número de páginas..
  */
-package Entidad;
+package Entidades;
 
 import java.util.Scanner;
 
