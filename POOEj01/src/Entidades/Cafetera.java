@@ -4,7 +4,6 @@ con los atributos capacidadMáxima (la cantidad máxima de café que puede conte
 y cantidadActual (la cantidad actual de café que hay en la cafetera). Agregar constructor vacío
 y con parámetros así como setters y getters. Crear clase CafeteraServicio en el paquete Servicios
 con los siguiente:
-
 Método llenarCafetera(): hace que la cantidad actual sea igual a la capacidad máxima. 
 Método servirTaza(int): se pide el tamaño de una taza vacía, el método recibe el tamaño de la taza 
 y simula la acción de servir la taza con la capacidad indicada. 

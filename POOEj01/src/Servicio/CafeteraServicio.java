@@ -22,26 +22,39 @@ import java.util.Scanner;
  */
 public class CafeteraServicio {
     Scanner sc = new Scanner(System.in);
-    int taza;
+    
     Cafetera cafe = new Cafetera();
     
+    public void crearCafetera(){
+        cafe.setCapacidadMaxima(2000);
+    }
     public void llenarCafetera(){
         cafe.setCantidadActual(cafe.getCapacidadMaxima());
     }
-    public void servirTaza(){
+    public void servirTaza(int taza){
         
-        System.out.println("Ingrese el tamaño de la taza: ");
-        taza = sc.nextInt();
         int aux = cafe.getCantidadActual() - taza;
         if (cafe.getCantidadActual()>= taza) {
             
-            System.out.println("Se llenó la taza");
+            System.out.println("Se llenó la taza\n ");
             cafe.setCantidadActual(aux);
             
              }
         else {
-            System.out.println("Se llenó la taza con " + cafe.getCantidadActual());
+            System.out.println("Café insuficiente!. Se llenó la taza solo con " + cafe.getCantidadActual() + " ml.\n");
             cafe.setCantidadActual(0);
+        }
+    }
+    public void vaciarCafetera(){
+        cafe.setCantidadActual(0);
+    }
+    public void agregarCafe(int cantidad){//corregir
+        if (cantidad> (-cafe.getCantidadActual() + cafe.getCapacidadMaxima())) {
+            System.out.println("Cafetera llena!se agregaron " + (cafe.getCantidadActual() - cantidad) + "ml.\n");
+            
+        }
+        else{
+        cafe.setCantidadActual(cafe.getCantidadActual() + cantidad);
         }
     }
 }
