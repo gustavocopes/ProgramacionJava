@@ -5,6 +5,8 @@
  */
 package Entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author gcopes
@@ -13,14 +15,14 @@ public class Persona {
     
     private String nombre;
     private int edad;
-    private String sexo;
+    private char sexo;
     private float peso;
     private float altura;
-
+    Scanner sc = new Scanner(System.in);
     public Persona() {
     }
 
-    public Persona(String nombre, int edad, String sexo, float peso, float altura) {
+    public Persona(String nombre, int edad, char sexo, float peso, float altura) {
         this.nombre = nombre;
         this.edad = edad;
         this.sexo = sexo;
@@ -44,12 +46,17 @@ public class Persona {
         this.edad = edad;
     }
 
-    public String getSexo() {
+    public char getSexo() {
         return sexo;
     }
 
-    public void setSexo(String sexo) {
+    public void setSexo(char sexo) {
+        
         this.sexo = sexo;
+        do{
+            System.out.println("Ingrese una opción válida!");
+            sexo = sc.next().charAt(0);
+        }while (sexo != 'H' && sexo != 'M' && sexo != 'O'); 
     }
 
     public float getPeso() {
