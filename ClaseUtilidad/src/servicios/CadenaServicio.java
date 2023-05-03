@@ -32,9 +32,13 @@ public class CadenaServicio {
     
     public void invertirFrase(Cadena chain){
         for (int i = chain.getLongitud()-1; i <= 0; i--) {
-            System.out.println(chain.getFrase().charAt(i));
+            System.out.print(chain.getFrase().charAt(i));
         }
+        
+                System.out.println("");
+                
     }
+    
 /** Método vecesRepetido(String letra), recibirá un carácter ingresado por 
  * el usuario y contabilizar cuántas veces se repite el carácter en la frase,
  * por ejemplo:
@@ -73,7 +77,7 @@ public class CadenaServicio {
     public void unirFrase(String frase, Cadena chain){
         
         
-        System.out.println(frase + (chain.getFrase()));
+        System.out.println(frase + " " + (chain.getFrase()));
     }
     
 /**Método reemplazar(String letra), deberá reemplazar todas las letras “a”
@@ -89,7 +93,7 @@ public class CadenaServicio {
             else {
                 System.out.print(chain.getFrase().substring(i, i+1));
             }
-            System.out.println(" ");
+            
     }
         
 }
@@ -98,18 +102,21 @@ public class CadenaServicio {
  * y falso si no.*/
     
 public void contiene(String letra, Cadena chain){
-     boolean encontrado = false;
+    boolean encontrado = false;
      int indice = 0;
-    while (!encontrado) {
-        if(chain.getFrase().substring(indice).equals(letra)){
-        encontrado = true;
-         indice++;
-     }}
-        if(indice >=1) {
+        do {
+            if(chain.getFrase().substring(indice, indice + 1 ).equals(letra)){
+            encontrado = true;
+            
+            }
+            indice++;
+        }while (!encontrado);
+        System.out.println("el indice es " + indice);
+        if(encontrado) {
             System.out.println("La frase contiene la letra " + letra);
         }
         else{
-            System.out.println("Esta letra no está contenida en la frase");
+            System.out.println("Esta letra " + letra  + " no está contenida en la frase");
         }
 }
 }
