@@ -29,7 +29,7 @@ import java.util.Scanner;
  * @author gcopes
  */
 public class PersonaServicio {
-    Scanner sc = new Scanner(System.in);
+    Scanner sc = new Scanner(System.in).useDelimiter("\n");
    
     
     
@@ -40,8 +40,8 @@ public class PersonaServicio {
         float peso, altura;
 
         
-        System.out.println("Indique el nombre de la persona: ");
-        nombre = sc.nextLine();
+        System.out.println("\nIndique el nombre de la persona: ");
+        nombre = sc.next();
         System.out.println("Indique la edad: " );
         edad = sc.nextInt();
         System.out.println("Ingrese el sexo: H/M/O");

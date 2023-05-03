@@ -14,7 +14,7 @@ import java.util.Scanner;
  *
  * @author gcopes
  */
-public class Main {
+public class MainRaices {
 
     /**
      * @param args the command line arguments
