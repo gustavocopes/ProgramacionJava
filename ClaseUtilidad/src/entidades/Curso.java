@@ -34,6 +34,7 @@ public class Curso {
         this.cantidadHorasDia = cantidadHorasDia;
         this.cantidadDiasPorSemana = cantidadDiasPorSemana;
         this.precioPorHora = precioPorHora;
+        
     }
 
     public String getNombreCurso() {
