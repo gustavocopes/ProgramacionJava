@@ -21,12 +21,22 @@ public class CursoService {
      * ingrese el nombre de cada alumno.*/
     
     public void cargarAlumnos(Curso aula){
-        for (int q = 0; q < 5; q++) {
+        int cont = 0;
+        //String opcion = sc.next();
+        //System.out.println("Cuántos estudiantes desea ingresar: ");
+        //cont = sc.nextInt();
+        for (int q = 0; q < cont; q++) {
+            //do{
             System.out.println("Ingrese nombre del estudiante: ");
             Arrays.fill(aula.getAlumnos(),q, q +1,sc.next());
-                   
-        }
+            cont++;
+//            
+//            System.out.println("Desea cargar otro estudiante? s/n");
+//            
+//            }while(opcion.equalsIgnoreCase("n"));
             
+        }
+           // return cont;
     }
     
  /**Método crearCurso(): el método crear curso, le pide los valores de los atributos al
@@ -56,7 +66,7 @@ public class CursoService {
 
 public void calcularGananciaSemanal(Curso aula){
     
-    float ganancia = aula.getCantidadHorasDia() * aula.getPrecioPorHora() * aula.getAlumnos().length * aula.getCandiadDiasPorSemana();
+    float ganancia = aula.getCantidadHorasDia() * aula.getPrecioPorHora() * aula.getAlumnos().length * aula.getCantidadDiasPorSemana();
     System.out.println("La ganancia total por el curso " + aula.getNombreCurso() + " es : " + ganancia);
 }
 
