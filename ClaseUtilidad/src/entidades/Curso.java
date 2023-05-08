@@ -11,25 +11,30 @@ Métodos getters y setters de cada atributo.
  */
 package entidades;
 
+import java.util.Scanner;
+
 /**
  *
  * @author GCopes
  */
 public class Curso {
+    Scanner sc = new Scanner(System.in);
+    
     private String nombreCurso, turno;
     private float cantidadHorasDia, precioPorHora;
-    private int candiadDiasPorSemana;
+    private int cantidadDiasPorSemana;
     private String[] alumnos = new String[5];
 
     public Curso() {
     }
 
-    public Curso(String nombreCurso, String turno, float cantidadHorasDia, int candiadDiasPorSemana, float precioPorHora) {
+    public Curso(String nombreCurso, String turno, float cantidadHorasDia, int cantidadDiasPorSemana, float precioPorHora) {
         this.nombreCurso = nombreCurso;
         this.turno = turno;
         this.cantidadHorasDia = cantidadHorasDia;
-        this.candiadDiasPorSemana = candiadDiasPorSemana;
+        this.cantidadDiasPorSemana = cantidadDiasPorSemana;
         this.precioPorHora = precioPorHora;
+        
     }
 
     public String getNombreCurso() {
@@ -45,6 +50,14 @@ public class Curso {
     }
 
     public void setTurno(String turno) {
+        if (!turno.equalsIgnoreCase("tarde") && !turno.equalsIgnoreCase("maniana")) {
+            do {
+                System.out.println("Turno incorrecto!. Ingrese un turno válido: ");
+                turno = sc.next();
+            } while (!turno.equalsIgnoreCase("tarde") && !turno.equalsIgnoreCase("maniana"));
+            
+            
+        }
         this.turno = turno;
     }
 
@@ -53,15 +66,31 @@ public class Curso {
     }
 
     public void setCantidadHorasDia(float cantidadHorasDia) {
+        do {
+            if (cantidadHorasDia >10 || cantidadHorasDia <=0) {
+                System.out.println("El curso no puede tener más de 12 hs ni menos de 0 ");
+                cantidadHorasDia = sc.nextFloat();
+            }
+            
+        } while (cantidadHorasDia >10 || cantidadHorasDia <=0);
+        
         this.cantidadHorasDia = cantidadHorasDia;
     }
 
-    public int getCandiadDiasPorSemana() {
-        return candiadDiasPorSemana;
+    public int getCantidadDiasPorSemana() {
+        return cantidadDiasPorSemana;
     }
 
-    public void setCandiadDiasPorSemana(int candiadDiasPorSemana) {
-        this.candiadDiasPorSemana = candiadDiasPorSemana;
+    public void setCandiadDiasPorSemana(int cantidadDiasPorSemana) {
+         do {
+            if (cantidadDiasPorSemana >7 || cantidadDiasPorSemana <=0) {
+                System.out.println("El curso no puede tener más de 7 dias a la semana ni menos de 0 ");
+                cantidadDiasPorSemana = sc.nextInt();
+            }
+            
+        } while (cantidadDiasPorSemana >7 || cantidadDiasPorSemana <=0);
+        
+        this.cantidadDiasPorSemana = cantidadDiasPorSemana;
     }
 
     public float getPrecioPorHora() {
@@ -69,6 +98,13 @@ public class Curso {
     }
 
     public void setPrecioPorHora(float precioPorHora) {
+        do {
+            if (precioPorHora <0) {
+                System.out.println("Debe pagarse algo por el curso ");
+            }
+            
+        } while ( precioPorHora <0);
+        
         this.precioPorHora = precioPorHora;
     }
 

@@ -4,7 +4,7 @@
 package servicios;
 
 import entidades.Curso;
-import java.util.Arrays;
+//import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -20,13 +20,27 @@ public class CursoService {
      * en un arreglo e iterar con un bucle, solicitando en cada repetición que se 
      * ingrese el nombre de cada alumno.*/
     
-    public void cargarAlumnos(Curso aula){
+    public String[] cargarAlumnos(){
+       
+        String[] estudiante = new String[5];
+        String opcion;
         for (int q = 0; q < 5; q++) {
-            System.out.println("Ingrese nombre del estudiante: ");
-            Arrays.fill(aula.getAlumnos(),q, q +1,sc.next());
-                   
-        }
             
+            System.out.println("Ingrese nombre del estudiante: ");
+            estudiante[q] = sc.next();
+            //Arrays.fill(estudiante,q, q +1,sc.next()); // esto no guarda el array, y llena el array con el último valor
+            do{           
+            System.out.println("Desea ingresar otro alumno? s/n");
+            opcion = sc.next();
+            }
+            while(!opcion.equalsIgnoreCase("s")&& !opcion.equalsIgnoreCase("n"));
+            if (opcion.equalsIgnoreCase("n")) {
+                break;
+                
+            }
+                        
+    }
+        return estudiante;
     }
     
  /**Método crearCurso(): el método crear curso, le pide los valores de los atributos al
@@ -45,7 +59,7 @@ public class CursoService {
         aula.setCandiadDiasPorSemana(sc.nextInt());
         System.out.println("Ingrese el precio por hora del curso: ");
         aula.setPrecioPorHora(sc.nextFloat());
-        cargarAlumnos(aula);
+        aula.setAlumnos(cargarAlumnos());
         
     }
     
@@ -55,8 +69,18 @@ public class CursoService {
  * que se repite el encuentro.*/    
 
 public void calcularGananciaSemanal(Curso aula){
-    
-    float ganancia = aula.getCantidadHorasDia() * aula.getPrecioPorHora() * aula.getAlumnos().length * aula.getCandiadDiasPorSemana();
+    String[] alumnes = aula.getAlumnos();
+    int cont = 0;
+    for (int i = 0; i < 5; i++) {
+        if (alumnes[i] != null) {
+            cont++;            
+        }
+        else {
+            break;
+        }
+        System.out.println(alumnes[i]);
+    }
+    float ganancia = aula.getCantidadHorasDia() * aula.getPrecioPorHora() * cont * aula.getCantidadDiasPorSemana();
     System.out.println("La ganancia total por el curso " + aula.getNombreCurso() + " es : " + ganancia);
 }
 

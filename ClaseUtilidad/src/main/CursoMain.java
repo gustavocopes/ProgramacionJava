@@ -28,5 +28,5 @@ public class CursoMain {
         cs.calcularGananciaSemanal(c1);
         
     }
-    
+     
 }
