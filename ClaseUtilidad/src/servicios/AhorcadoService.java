@@ -23,21 +23,22 @@ public class AhorcadoService {
         
         System.out.println("Ingrese una palabra: ");
         String palabra = sc.next();
-        //juego.setVector.length(palabra.length());
+        
         String[] palabraSec = new String[palabra.length()];
-        for (int i = 0; i < juego.getCantLetras(); i++) {
+        for (int i = 0; i < palabra.length(); i++) {
             palabraSec[i] = palabra.substring(i, i+1);
         }
         juego.setVector(palabraSec);
         System.out.println("Ingrese la cantidad de jugadas posibles: ");
         juego.setCantJugadas(sc.nextInt());
+        
     }
     
 /**Método longitud(): muestra la longitud de la palabra que se debe encontrar. 
  * Nota: buscar como se usa el vector.length.*/
 
     public void longitud(Ahorcado juego){
-        System.out.println("La longitud de la palabra es: " + juego.getCantLetras());
+        System.out.println("La longitud de la palabra es: " + juego.getVector().length);
         
     }
     
@@ -45,10 +46,12 @@ public class AhorcadoService {
  * si la letra ingresada es parte de la palabra o no. También informará si la letra 
  * estaba o no.*/
     
-    public void buscar(String letra, Ahorcado juego){
+    public int buscar(String letra, Ahorcado juego){
         String[] palabra = juego.getVector();
         int cant = 0;
-        for (int i = 0; i < juego.getCantLetras(); i++) {
+        ;
+        for (int i = 0; i < juego.getVector().length; i++) {
+            
             if (letra.equalsIgnoreCase(palabra[i])) {
                 cant++;
                 
@@ -59,9 +62,10 @@ public class AhorcadoService {
         }
         else {
             System.out.println("Esta letra no está en la palabra buscada!");
+            
         }
-        juego.setCantLetras(cant);
-        
+        juego.setCantLetras(juego.getCantJugadas() + cant);
+        return cant;
         
     }
     /**Método encontradas(letra):  que reciba una letra ingresada por el usuario 
@@ -72,8 +76,49 @@ public class AhorcadoService {
     
     public boolean encontradas(String letra, Ahorcado juego){
          boolean encontrada =  false;
-         System.out.println("Hasta el momento se han encontrado ");
-        
+         System.out.println("Hasta el momento se han encontrado " + juego.getCantLetras());
+         if (buscar(letra, juego) >= 1) {
+             encontrada = true;
+            }
+         else {
+             encontrada = false;
+             juego.setCantJugadas(juego.getCantJugadas() - 1 );
+         }
         return encontrada;
+    }
+    
+    /**Método intentos(): para mostrar cuántas oportunidades le queda al jugador.*/
+    
+    public void intentos(Ahorcado juego){
+        System.out.println("Le quedan " + juego.getCantJugadas() + " intentos.");
+    }
+    
+    /**Método juego(): el método juego se encargará de llamar todos
+     * los métodos previamente mencionados e informará cuando el 
+     * usuario descubra toda la palabra o se quede sin intentos.
+     * Este método se llamará en el main.*/
+    
+    public void juego(Ahorcado juego){
+        int vueltas = 0;
+       
+       crearJuego(juego);
+       longitud(juego);
+        
+        do {
+            System.out.println("Ingrese una letra: ");
+            String letra = sc.next();
+            buscar(letra, juego);
+            
+            encontradas(letra, juego);
+            boolean hallazgos = encontradas(letra, juego);
+            if (hallazgos == false) {
+                vueltas--;
+                
+            }
+            intentos(juego);
+        } while (juego.getCantJugadas() > 0 || juego.getCantLetras() < juego.getVector().length);
+        
+          
+
     }
 }

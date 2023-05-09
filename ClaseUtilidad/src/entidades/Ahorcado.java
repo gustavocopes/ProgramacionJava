@@ -13,7 +13,7 @@ public class Ahorcado {
     
     private int cantLetras;
     private int cantJugadas;
-    private String[] vector = new String[cantLetras];// qué valor le doy a la dimensión??
+    private String[] vector;// qué valor le doy a la dimensión??
 
     public Ahorcado() {
     }
