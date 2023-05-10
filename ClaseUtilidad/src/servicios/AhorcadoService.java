@@ -25,7 +25,7 @@ public class AhorcadoService {
         String palabra = sc.next();
         
         String[] palabraSec = new String[palabra.length()];
-        for (int i = 0; i < palabra.length(); i++) {
+        for (int i = 0; i < palabra.length(); i++) {// se podría reemplazar con juego.setVector(palabra.toCharArray())
             palabraSec[i] = palabra.substring(i, i+1);
         }
         juego.setVector(palabraSec);
@@ -49,22 +49,14 @@ public class AhorcadoService {
     public int buscar(String letra, Ahorcado juego){
         String[] palabra = juego.getVector();
         int cant = 0;
-        ;
+        
         for (int i = 0; i < juego.getVector().length; i++) {
             
             if (letra.equalsIgnoreCase(palabra[i])) {
                 cant++;
-                
-        }}
-        if (cant >= 1) {
-            System.out.println("Muy bien! Esta letra se encuentra " +  cant  + " veces.");                
-            
+                }
         }
-        else {
-            System.out.println("Esta letra no está en la palabra buscada!");
-            
-        }
-        juego.setCantLetras(juego.getCantJugadas() + cant);
+       
         return cant;
         
     }
@@ -76,14 +68,18 @@ public class AhorcadoService {
     
     public boolean encontradas(String letra, Ahorcado juego){
          boolean encontrada =  false;
-         System.out.println("Hasta el momento se han encontrado " + juego.getCantLetras());
+         
          if (buscar(letra, juego) >= 1) {
+             System.out.println("Muy bien! Esta letra se encuentra " +  buscar(letra,juego) + " veces.");
+             juego.setCantLetras(juego.getCantLetras()+ buscar(letra,juego));
              encontrada = true;
             }
          else {
              encontrada = false;
              juego.setCantJugadas(juego.getCantJugadas() - 1 );
+             System.out.println("Esta letra no está en la palabra buscada!");
          }
+         System.out.println("Hasta el momento se han encontrado " + juego.getCantLetras());
         return encontrada;
     }
     
@@ -99,8 +95,7 @@ public class AhorcadoService {
      * Este método se llamará en el main.*/
     
     public void juego(Ahorcado juego){
-        int vueltas = 0;
-       
+               
        crearJuego(juego);
        longitud(juego);
         
@@ -110,15 +105,16 @@ public class AhorcadoService {
             buscar(letra, juego);
             
             encontradas(letra, juego);
-            boolean hallazgos = encontradas(letra, juego);
-            if (hallazgos == false) {
-                vueltas--;
-                
-            }
+            
             intentos(juego);
-        } while (juego.getCantJugadas() > 0 || juego.getCantLetras() < juego.getVector().length);
-        
-          
+        } while (juego.getCantJugadas() > 0 && juego.getCantLetras() < juego.getVector().length);
+             if (juego.getCantLetras() == juego.getVector().length) {
+                 System.out.println("Palabra encontrada!");
+                   
+        }
+             else if(juego.getCantJugadas() == 0){
+                 System.out.println("Se acabaron los intentos!");
+             }
 
     }
 }
