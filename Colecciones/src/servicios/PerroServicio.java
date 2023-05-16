@@ -53,7 +53,8 @@ public class PerroServicio {
             }
             else if (!it.next().equalsIgnoreCase(op)) {
             
-             System.out.println("Esta raza no se encuentra en la lista");        }
+             System.out.println("Esta raza no se encuentra en la lista");       
+            }
     }
          
         sort(perros);
