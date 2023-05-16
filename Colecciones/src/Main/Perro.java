@@ -1,7 +1,5 @@
 package Main;
 
-import java.util.ArrayList;
-import java.util.Scanner;
 import servicios.PerroServicio;
 
 /*
@@ -26,6 +24,7 @@ public class Perro {
         ps.crearPerro();
         ps.mostrarPerro();
         ps.eliminarPerro();
+        ps.mostrarPerro();
     }
 
 }

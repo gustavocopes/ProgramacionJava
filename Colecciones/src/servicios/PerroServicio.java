@@ -8,6 +8,7 @@ la lista ordenada..
 package servicios;
 
 import java.util.ArrayList;
+import static java.util.Collections.sort;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -50,13 +51,11 @@ public class PerroServicio {
             if (it.next().equalsIgnoreCase(op)){
                 it.remove();
             }
-        }
-        
-        System.out.println("Desea ingresar otro perro? s/n");
-        String op1 = sc.next();
-        if (op1.equalsIgnoreCase("s")) {
-            crearPerro();
-                    }
-        
+            else if (!it.next().equalsIgnoreCase(op)) {
+            
+             System.out.println("Esta raza no se encuentra en la lista");        }
     }
+         
+        sort(perros);
+}
 }
