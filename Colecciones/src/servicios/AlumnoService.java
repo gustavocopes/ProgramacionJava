@@ -57,30 +57,15 @@ public class AlumnoService {
     }
 
     public void metodoFinal(String a1) {
-
-        Iterator<Alumno> it = listaAlumnos.iterator();
+        String promediado = null;
         Integer suma = 0;
-        // double promedio = 0;
-
-        while (it.hasNext()) {
-            if (it.next().getNombre().equals(a1)) {
-                suma = it.next().getNotas().get(0) + it.next().getNotas().get(1) + it.next().getNotas().get(2);
-
-            }
-
+        for (int i = 0; i < listaAlumnos.size(); i++) {
+            if (listaAlumnos.get(i).getNombre().equals(a1)) {
+                suma = listaAlumnos.get(i).getNotas().get(0) + listaAlumnos.get(i).getNotas().get(1) + listaAlumnos.get(i).getNotas().get(2);
+                promediado = listaAlumnos.get(i).getNombre();
+            }            
         }
-        System.out.println(" suma/3");
+     
+        System.out.println("El promedio de " + promediado + " es " +  (suma/3));
     }
 }
-/**
- * SERVICIOS Scanner leer = new Scanner(System.in);
- *
- * public Alumno crearAlumno(){ ArrayList<Integer> notas = new ArrayList<Integer>(); System.out.println("ingrese el nombre del alumno "); String nombre = leer.next(); for (int i = 0; i < 3; i++) { System.out.println("ingrese nota " + (i+1)); notas.add(leer.nextInt()); }  *
- * return new Alumno(nombre,notas); } public void cargarLista(){ boolean continuar = true; ArrayList<Alumno> misAlum = new ArrayList<Alumno>(); while (continuar){ misAlum.add(crearAlumno()); System.out.println("desea seguir cargando alumnos? s/n "); if (leer.next().charAt(0)=='n'){ continuar = false; } }
- *
- * for (Alumno aux : misAlum) { System.out.println(aux);
- *
- * }
- * }
- * }
- */
