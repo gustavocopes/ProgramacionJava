@@ -12,6 +12,7 @@ package servicios;
 
 import entidades.Alumno;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 /**
@@ -19,37 +20,67 @@ import java.util.Scanner;
  * @author Gustavo
  */
 public class AlumnoService {
-    
-    private ArrayList<Integer> nuevaLista;
-    private Scanner sc;
-    
-       //Esta es una muy buena practica
-    public PersonaServicioArrayList() {
-        this.nuevaLista = new ArrayList<>(); // Creo el espacio en memoria del LISTA
-        this.sc = new Scanner(System.in).useDelimiter("\n");// Cuando se invoca la clase, habilita el flujo de datos
+
+    ArrayList<Alumno> listaAlumnos = new ArrayList<Alumno>();
+    Scanner sc = new Scanner(System.in);
+
+    public ArrayList<Alumno> crearAlumno() {
+        String opcion = null;
+
+        do {
+            Alumno al1 = new Alumno();
+            System.out.println("Ingrese nombre del alumno");
+            al1.setNombre(sc.next());
+
+            ArrayList<Integer> notas = new ArrayList();
+            for (int i = 0; i < 3; i++) {
+                System.out.println("Ingrese la nota " + (i + 1));
+                notas.add(sc.nextInt());
+
+            }
+            al1.setNotas(notas);
+
+            listaAlumnos.add(al1);
+            System.out.println("Desea agregar un alumno? s/n");
+            opcion = sc.next();
+        } while (opcion.equalsIgnoreCase("s"));
+        
+        return listaAlumnos;
+
     }
 
-    
-    public void crearAlumno(){
-        String opcion = null;
-        //Alumno st = new Alumno();
-        do{
-            ArrayList<Integer> calif = new ArrayList();
-            System.out.println("Ingrese el nombre del alumno: ");
-            String nombre = sc.next();
-            System.out.println("Ingrese las tres notas del alumno");
-            int nota = sc.nextInt();
-            int nota2 = sc.nextInt();
-            int nota3 = sc.nextInt();
-            
-            calif.add(nota);
-            calif.add(nota2);
-            calif.add(nota3);
-            ArrayList<Alumno> al = new ArrayList();
-            al.add(e);
-            
-            System.out.println("Desea agregar otro alumno? s/n");
-            opcion = sc.next();
-        }while(opcion.equalsIgnoreCase("s"));
+    public void mostrarAlumno() {
+        System.out.println("Los alumnos son: ");
+        for (Alumno aux : listaAlumnos) {
+            System.out.println(aux);
+        }
+    }
+
+    public void metodoFinal(String a1) {
+
+        Iterator<Alumno> it = listaAlumnos.iterator();
+        Integer suma = 0;
+        // double promedio = 0;
+
+        while (it.hasNext()) {
+            if (it.next().getNombre().equals(a1)) {
+                suma = it.next().getNotas().get(0) + it.next().getNotas().get(1) + it.next().getNotas().get(2);
+
+            }
+
+        }
+        System.out.println(" suma/3");
     }
 }
+/**
+ * SERVICIOS Scanner leer = new Scanner(System.in);
+ *
+ * public Alumno crearAlumno(){ ArrayList<Integer> notas = new ArrayList<Integer>(); System.out.println("ingrese el nombre del alumno "); String nombre = leer.next(); for (int i = 0; i < 3; i++) { System.out.println("ingrese nota " + (i+1)); notas.add(leer.nextInt()); }  *
+ * return new Alumno(nombre,notas); } public void cargarLista(){ boolean continuar = true; ArrayList<Alumno> misAlum = new ArrayList<Alumno>(); while (continuar){ misAlum.add(crearAlumno()); System.out.println("desea seguir cargando alumnos? s/n "); if (leer.next().charAt(0)=='n'){ continuar = false; } }
+ *
+ * for (Alumno aux : misAlum) { System.out.println(aux);
+ *
+ * }
+ * }
+ * }
+ */

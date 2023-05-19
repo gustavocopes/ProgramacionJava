@@ -16,11 +16,12 @@ public class Alumno {
     private ArrayList<Integer> notas;
 
     public Alumno() {
+        this.notas = new ArrayList<Integer>();
     }
 
-    public Alumno(String nombre, ArrayList<Integer> nota) {
+    public Alumno(String nombre, ArrayList<Integer> notas) {
         this.nombre = nombre;
-        this.notas = new ArrayList();
+        this.notas = new ArrayList<Integer>();
     }
 
     public String getNombre() {
@@ -37,7 +38,7 @@ public class Alumno {
 
     public void setNotas(ArrayList<Integer> notas) {
         this.notas = notas;
-        //notas.add(notas);
+        
     }
 
     @Override

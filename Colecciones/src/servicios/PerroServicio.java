@@ -47,15 +47,18 @@ public class PerroServicio {
         System.out.println("Ingrese una raza de perro a eliminar de la lista: ");
         String op = sc.next();
         Iterator<String> it = perros.iterator();
+        boolean encontrado = false;
         while (it.hasNext()){
             if (it.next().equalsIgnoreCase(op)){
                 it.remove();
-            }
-            else if (!it.next().equalsIgnoreCase(op)) {
+                encontrado = true;
+                System.out.println("Se eliminó " + op);
+            }}
+            if (!encontrado) {
             
              System.out.println("Esta raza no se encuentra en la lista");       
             }
-    }
+    
          
         sort(perros);
 }
