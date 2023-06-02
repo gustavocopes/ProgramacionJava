@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="servicios">
+  <ClassDiagramComponents>
+    <Class name="AlmacenServicio" package="servicios" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="sc" type="Scanner" visibility="package"/>
+        <Field name="mercaderia" type="HashMap&lt;String, Double&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarProducto" returnType="void" visibility="public"/>
+        <Method name="modificarPrecio" returnType="void" visibility="public"/>
+        <Method name="eliminarProducto" returnType="void" visibility="public"/>
+        <Method name="mostrarProductos" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="AlumnoService" package="servicios" visibility="public" xPosition="320.0" yPosition="20.0">
+      <Fields>
+        <Field name="listaAlumnos" type="ArrayList&lt;Alumno&gt;" visibility="package"/>
+        <Field name="sc" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crearAlumno" returnType="ArrayList&lt;Alumno&gt;" visibility="public"/>
+        <Method name="mostrarAlumno" returnType="void" visibility="public"/>
+        <Method name="metodoFinal" returnType="String" visibility="public">
+          <Argument type="String" name="a1"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="AlumnosServicio" package="servicios" visibility="public" xPosition="620.0" yPosition="20.0">
+      <Fields>
+        <Field name="estudiante" type="ArrayList&lt;Alumnos&gt;" visibility="package"/>
+        <Field name="sc" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="A" returnType="Alumnos" visibility="public">
+          <Argument type="Alumnos" name="est"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="CantanteServicio" package="servicios" visibility="public" xPosition="920.0" yPosition="20.0">
+      <Fields/>
+      <Constructors/>
+      <Methods>
+        <Method name="menu" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PaisServicio" package="servicios" visibility="public" xPosition="1220.0" yPosition="20.0">
+      <Fields>
+        <Field name="estado" type="HashSet&lt;String&gt;" visibility="package"/>
+        <Field name="sc" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarPais" returnType="void" visibility="public"/>
+        <Method name="mostrarPais" returnType="void" visibility="public"/>
+        <Method name="ordenarPais" returnType="void" visibility="public"/>
+        <Method name="eliminarPais" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PeliculaServicio" package="servicios" visibility="public" xPosition="1520.0" yPosition="20.0">
+      <Fields>
+        <Field name="sc" type="Scanner" visibility="package"/>
+        <Field name="listaPelicula" type="ArrayList&lt;Pelicula&gt;" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crearPelicula" returnType="void" visibility="public"/>
+        <Method name="mostrarPelicula" returnType="void" visibility="public"/>
+        <Method name="mostrarPeliLarga" returnType="void" visibility="public"/>
+        <Method name="ordenarPeliDesc" returnType="void" visibility="public"/>
+        <Method name="ordenarPeliAsc" returnType="void" visibility="public"/>
+        <Method name="ordenarPeliTitulo" returnType="void" visibility="public"/>
+        <Method name="ordenarPeliDirector" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="PerroServicio" package="servicios" visibility="public" xPosition="1820.0" yPosition="20.0">
+      <Fields>
+        <Field name="perros" type="ArrayList&lt;String&gt;" visibility="package"/>
+        <Field name="sc" type="Scanner" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="crearPerro" returnType="void" visibility="public"/>
+        <Method name="mostrarPerro" returnType="void" visibility="public"/>
+        <Method name="eliminarPerro" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="OPdid" package="" visibility="public" xPosition="462.0" yPosition="430.0">
+      <Fields>
+        <Field name="ohola" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>

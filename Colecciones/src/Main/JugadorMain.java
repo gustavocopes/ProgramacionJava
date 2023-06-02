@@ -6,25 +6,14 @@
 
 package Main;
 
-import servicios.AlmacenServicio;
-
 /**
  *
  * @author gcopes 
  */
-public class AlmacenMain {
+public class JugadorMain {
 
     
     public static void main(String[] args) {
-        
-        AlmacenServicio as = new AlmacenServicio();
-        
-        as.cargarProducto();
-        as.modificarPrecio();
-        as.eliminarProducto();
-        as.mostrarProductos();
-        
-                  
         
     }
 
