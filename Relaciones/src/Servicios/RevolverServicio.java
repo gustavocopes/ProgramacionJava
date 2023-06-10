@@ -19,8 +19,8 @@ public class RevolverServicio {
 
     public void llenarRevolver(RevolverDeAgua rv) {
 
-        rv.setPosicion(Math.random() * 10 + 6);
-        rv.setPosAgua(Math.random() * 10 + 6);
+        rv.setPosicion(2);//posición del tambor que va a disparar
+        rv.setPosAgua(5);// posición donde hay agua
 
     }
 
@@ -33,45 +33,62 @@ public class RevolverServicio {
     }
 
     public void siguienteChorro(RevolverDeAgua rv) {
-        rv.setPosAgua(rv.getPosAgua() + 1);
+        if (rv.getPosicion()<5) {
+           rv.setPosicion(rv.getPosicion() + 1); 
+        }
+        else {
+            rv.setPosicion(0);
+        }
+        
 
     }
 
     public void disparo(RevolverDeAgua r, Jugador jg) {
-        jg.setMojado(true);
+        jg.setMojado(false);
         
         if (mojar(r) == true) {
-            jg.setMojado(false);
+            jg.setMojado(true);
         }
+        siguienteChorro(r);
     }
 
-    public void llenarJuego(ArrayList<Jugador> jugadores, RevolverDeAgua r, Jugador jg) {
+    public Juego llenarJuego(ArrayList<Jugador> jugadores, RevolverDeAgua r, Jugador jg) {
+        jugadores = new ArrayList();
+        Juego game = new Juego();
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese la cantidad de jugadores que tendrá la ronda: ");
-        int cantJugadores = 6;
-        if (sc.nextInt() <= 6) {
+        
+        int cantJugadores = sc.nextInt();
+        if (cantJugadores < 6) {
             for (int i = 0; i < cantJugadores; i++) {
-                jg.setId(i);
+                jg.setId(i + 1 );
                 jg.setNombre("Jugador " + jg.getId());
-            }
-        } else {
-            for (int i = 0; i < 6; i++) {
-                jg.setId(i);
-                jg.setNombre("Jugador " + jg.getId());
+                
+                jugadores.add(jg);
             }
         }
-        jugadores.add(jg);
-//        game.setJugadores(jugadores);
-//        game.setR(r);
+        else {
+            for (int i = 0; i < 6; i++) {
+                jg.setId(i + 1);
+                jg.setNombre("Jugador " + jg.getId());
+                jugadores.add(jg);
+            }
+        }
+        System.out.println(jg);
+       
+        game.setJugadores(jugadores);
+        game.setR(r);
+        System.out.println(game);
+        return game;
     }
 
     public void ronda(RevolverDeAgua rv, Jugador jg) {
         disparo(rv, jg);
-        if (jg.getMojado() == false){
-            System.out.println(jg);
+        if (jg.getMojado() == true){
+            System.out.println(jg + "está mojado");
         }
         else{
-            siguienteChorro(rv);
+            ronda(rv, jg);
             
         }
 

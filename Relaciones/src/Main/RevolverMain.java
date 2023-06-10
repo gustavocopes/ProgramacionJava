@@ -23,7 +23,10 @@ public class RevolverMain {
         Juego game = new Juego();
 
         rs.llenarRevolver(r);
-        rs.llenarJuego(game.getJugadores(), r, jg);
+        game = rs.llenarJuego(game.getJugadores(), r, jg);
+        rs.mojar(r);
+        rs.ronda(r, jg);
+        System.out.println(game);
     }
 
 }
