@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Cine">
+  <ClassDiagramComponents>
+    <Class name="Cine" package="" visibility="public" xPosition="498.0" yPosition="286.0">
+      <Fields>
+        <Field name="asientos" type="String[][]" visibility="private"/>
+        <Field name="clientes" type="ArrayList&lt;Espectadores&gt;" visibility="private"/>
+        <Field name="movie" type="Pelicula" visibility="private"/>
+        <Field name="precio" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarSala" returnType="void" visibility="public"/>
+        <Method name="cargarEspectador" returnType="void" visibility="public"/>
+        <Method name="cargarPelicula" returnType="void" visibility="public"/>
+        <Method name="ubicarEspectador" returnType="void" visibility="public"/>
+        <Method name="mostrarCine" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Pelicula" package="" visibility="public" xPosition="61.0" yPosition="90.0">
+      <Fields>
+        <Field name="titulo" type="String" visibility="private"/>
+        <Field name="director" type="String" visibility="private"/>
+        <Field name="edadMinima" type="int" visibility="private"/>
+        <Field name="duracion" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Espectador" package="" visibility="public" xPosition="1103.0" yPosition="69.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="edad" type="int" visibility="private"/>
+        <Field name="dinero" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="reproduciendo" source="Cine" target="Pelicula" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="van" source="Cine" target="Espectador" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..*" collectionType="List"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
