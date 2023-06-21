@@ -98,13 +98,15 @@ public class Alquiler {
         
         switch (opc){
             case 1: Barco bm = new BarcoMotor(30d, "MLS-350", 12d, 2012);
-            
+                    setPosicion(1);            
                     System.out.println("El costo del alquiler del barco a motor, matrícula: " + bm.getMatricula() +", es: $" + calculoAlquiler(bm.calcularModulo()));
                 break;
             case 2: Barco vel =  new Velero(3, "JKL-124", 8, 2015);
+                    setPosicion(2);
                 System.out.println("El costo del alquiler del velero, matrícula: " + vel.getMatricula() + ", es:  $"+ calculoAlquiler(vel.calcularModulo()));
                 break;
             case 3: Barco yt = new Yate(62, 3, "LMN-054", 10, 2013);
+                    setPosicion(3);
                 System.out.println("El costo del alquiler del yate, matrícula: " + yt.getMatricula() + ", es: $" + calculoAlquiler(yt.calcularModulo()));
                 break;
             case 4: System.out.println("Fin!");
@@ -112,7 +114,7 @@ public class Alquiler {
             default: System.out.println("Ingrese un opación válida");
             
         }
-    }while(opc != 4);
+    }while(opc > 4);
     }
 
     /*Un alquiler se calcula multiplicando el número de días de ocupación (calculado con la fecha de
@@ -120,6 +122,10 @@ alquiler y devolución), por un valor módulo de cada barco (obtenido simplement
 multiplicando por 10 los metros de eslora).*/
     
     public double calculoAlquiler(double modulo) {
+        System.out.println("Ingrese nombre del cliente: ");
+        setNombre(sc.next());
+        System.out.println("Ingrese dni del cliente: ");
+        setDoc(sc.nextInt());
         System.out.println("Ingrese día, mes y año de retiro de la embarcación: ");
         int diaI = sc.nextInt();
         int mesI  = sc.nextInt();
