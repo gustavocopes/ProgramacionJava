@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Astillero">
+  <ClassDiagramComponents>
+    <Class name="Alquiler" package="" visibility="public" xPosition="83.0" yPosition="36.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="doc" type="int" visibility="private"/>
+        <Field name="fechaInicio" type="Date" visibility="private"/>
+        <Field name="fechaFin" type="Date" visibility="private"/>
+        <Field name="posicion" type="int" visibility="private"/>
+        <Field name="nave" type="Barco" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calculoAlquiler" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Barco" package="" visibility="public" xPosition="477.0" yPosition="36.0">
+      <Fields>
+        <Field name="matricula" type="String" visibility="private"/>
+        <Field name="slora" type="double" visibility="private"/>
+        <Field name="annio" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Velero" package="" visibility="public" xPosition="241.0" yPosition="372.0">
+      <Fields>
+        <Field name="mastiles" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="BarcoMotor" package="" visibility="public" xPosition="457.0" yPosition="372.0">
+      <Fields>
+        <Field name="potencia" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Yate" package="" visibility="public" xPosition="683.0" yPosition="372.0">
+      <Fields>
+        <Field name="potencia" type="double" visibility="private"/>
+        <Field name="camarotes" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="BarcoMotor" target="Barco"/>
+    <IsRelation name="is" source="Yate" target="Barco"/>
+    <IsRelation name="is" source="Velero" target="Barco"/>
+    <HasRelation name="tiene" source="Alquiler" target="Barco" type="Composition" sourceCardinality="0..1" targetCardinality="1..*" collectionType="ArrayList"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
