@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Poliza">
+  <ClassDiagramComponents>
+    <Class name="Poliza" package="" visibility="public" xPosition="285.0" yPosition="87.0">
+      <Fields>
+        <Field name="numeroDePoliza" type="Int" visibility="private"/>
+        <Field name="FechaDeInicio" type="Date" visibility="private"/>
+        <Field name="untitledField" type="Object" visibility="private"/>
+        <Field name="cuotas" type="List&lt;Cuota&gt;" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="cargarCuotas" returnType="void" visibility="public"/>
+        <Method name="pagarCuota" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Cliente" package="" visibility="public" xPosition="16.0" yPosition="18.0">
+      <Fields>
+        <Field name="nombreCompleto" type="String" visibility="private"/>
+        <Field name="documento" type="Int" visibility="private"/>
+        <Field name="mail" type="String" visibility="private"/>
+        <Field name="domiciolio" type="String" visibility="private"/>
+        <Field name="telefono" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Class name="Vehiculo" package="" visibility="public" xPosition="24.0" yPosition="213.0">
+      <Fields>
+        <Field name="marca" type="String" visibility="private"/>
+        <Field name="model" type="String" visibility="private"/>
+        <Field name="anio" type="int" visibility="private"/>
+        <Field name="numeroDeMotor" type="int" visibility="private"/>
+        <Field name="chasis" type="int" visibility="private"/>
+        <Field name="color" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+    <Enum name="FormaDePago" package="" visibility="public" xPosition="542.0" yPosition="372.0">
+      <Literals>
+        <Literal name="EFECTIVO"/>
+        <Literal name="TRANSFERENCIA"/>
+        <Literal name="DEBITO"/>
+      </Literals>
+    </Enum>
+    <Class name="Cuota" package="" visibility="public" xPosition="533.0" yPosition="64.0">
+      <Fields>
+        <Field name="numeroDeCuota" type="Int" visibility="private"/>
+        <Field name="montoTotalDeCuota" type="Float" visibility="private"/>
+        <Field name="estaPagada" type="Boolean" visibility="private"/>
+        <Field name="fechaDeVencimiento" type="Date" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods/>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="algo" source="Poliza" target="Cliente" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <HasRelation name="algo2" source="Poliza" target="Vehiculo" type="Composition" sourceCardinality="0..1" targetCardinality="1..1"/>
+    <UseRelation name="nombre" source="Cuota" target="FormaDePago" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="nose1" source="Poliza" target="Cuota" type="Aggregation" sourceCardinality="0..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

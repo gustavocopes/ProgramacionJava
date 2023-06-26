@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Hoteleria">
+  <ClassDiagramComponents>
+    <Class name="Resort" package="" visibility="public" xPosition="414.0" yPosition="-2.0">
+      <Fields>
+        <Field name="nombre" type="String" visibility="private"/>
+        <Field name="direccion" type="String" visibility="private"/>
+        <Field name="localidad" type="String" visibility="private"/>
+        <Field name="gerente" type="String" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="menu" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="ExtraHotel" package="" visibility="public" xPosition="181.0" yPosition="55.0">
+      <Fields>
+        <Field name="priv" type="boolean" visibility="private"/>
+        <Field name="sup" type="double" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Hotel" package="" visibility="public" xPosition="625.0" yPosition="36.0">
+      <Fields>
+        <Field name="hab" type="int" visibility="private"/>
+        <Field name="camas" type="int" visibility="private"/>
+        <Field name="pisos" type="int" visibility="private"/>
+        <Field name="precioHab" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Hotel4" package="" visibility="public" xPosition="685.0" yPosition="206.0">
+      <Fields>
+        <Field name="gym" type="boolean" visibility="private"/>
+        <Field name="resto" type="String" visibility="private"/>
+        <Field name="capResto" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Hotel5" package="" visibility="public" xPosition="783.0" yPosition="365.0">
+      <Fields>
+        <Field name="salones" type="int" visibility="private"/>
+        <Field name="suites" type="int" visibility="private"/>
+        <Field name="limos" type="int" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Camping" package="" visibility="public" xPosition="38.0" yPosition="282.0">
+      <Fields>
+        <Field name="carpas" type="int" visibility="private"/>
+        <Field name="banios" type="int" visibility="private"/>
+        <Field name="comedor" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+    <Class name="Residencia" package="" visibility="public" xPosition="271.0" yPosition="282.0">
+      <Fields>
+        <Field name="hab" type="int" visibility="private"/>
+        <Field name="descGremial" type="boolean" visibility="private"/>
+        <Field name="campDeportivo" type="boolean" visibility="private"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="calcularPrecio" returnType="void" visibility="public"/>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <IsRelation name="is" source="Residencia" target="ExtraHotel"/>
+    <IsRelation name="is" source="ExtraHotel" target="Resort"/>
+    <IsRelation name="is" source="Hotel4" target="Hotel"/>
+    <IsRelation name="is" source="Hotel5" target="Hotel4"/>
+    <IsRelation name="is" source="Hotel" target="Resort"/>
+    <IsRelation name="is" source="Camping" target="ExtraHotel"/>
+  </ClassDiagramRelations>
+</ClassDiagram>
