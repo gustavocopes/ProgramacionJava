@@ -1,19 +1,21 @@
 package entidades;
 
+import java.util.Comparator;
+
 public class Hotel extends Resort {
 
-    private int hab;
+    private Integer hab;
 
-    private int camas;
+    private Integer camas;
 
-    private int pisos;
+    private Integer pisos;
 
-    private int precioHab;
+    private Integer precioHab;
 
     public Hotel() {
     }
 
-    public Hotel(int hab, int camas, int pisos, int precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public Hotel(Integer hab, Integer camas, Integer pisos, Integer precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(nombre, direccion, localidad, gerente);
         this.hab = hab;
         this.camas = camas;
@@ -22,35 +24,35 @@ public class Hotel extends Resort {
     }
 
 
-    public int getHab() {
+    public Integer getHab() {
         return hab;
     }
 
-    public void setHab(int hab) {
+    public void setHab(Integer hab) {
         this.hab = hab;
     }
 
-    public int getCamas() {
+    public Integer getCamas() {
         return camas;
     }
 
-    public void setCamas(int camas) {
+    public void setCamas(Integer camas) {
         this.camas = camas;
     }
 
-    public int getPisos() {
+    public Integer getPisos() {
         return pisos;
     }
 
-    public void setPisos(int pisos) {
+    public void setPisos(Integer pisos) {
         this.pisos = pisos;
     }
 
-    public int getPrecioHab() {
+    public Integer getPrecioHab() {
         return precioHab;
     }
 
-    public void setPrecioHab(int precioHab) {
+    public void setPrecioHab(Integer precioHab) {
         this.precioHab = precioHab;
     }
     /*El precio de una habitación debe calcularse de acuerdo con la siguiente fórmula:
@@ -61,4 +63,11 @@ agregado por gimnasio) + (valor agregado por limosinas).*/
         
         setPrecioHab(50 + (getCamas() * getHab() * getPisos()));
     }
+    
+    public static Comparator<Hotel> compararPrecio = new Comparator<Hotel>(){
+        @Override
+        public int compare(Hotel h1, Hotel h2) {
+            return  h2.getPrecioHab().compareTo(h1.getPrecioHab());
+        }
+    };
 }

@@ -1,22 +1,24 @@
 package entidades;
 
+import java.util.Comparator;
+
 public class Hotel4 extends Hotel {
 
     private boolean gym;
 
     private String resto;
 
-    private int capResto;
+    private Integer capResto;
 
 
-    public Hotel4(boolean gym, String resto, int capResto, int hab, int camas, int pisos, int precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public Hotel4(boolean gym, String resto, Integer capResto, Integer hab, Integer camas, Integer pisos, Integer precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(hab, camas, pisos, precioHab, nombre, direccion, localidad, gerente);
         this.gym = gym;
         this.resto = resto;
         this.capResto = capResto;
     }
 
-    public Hotel4(int hab, int camas, int pisos, int precioHab, String nombre, String direccion, String localidad, String gerente) {
+    public Hotel4(Integer hab, Integer camas, Integer pisos, Integer precioHab, String nombre, String direccion, String localidad, String gerente) {
         super(hab, camas, pisos, precioHab, nombre, direccion, localidad, gerente);
     }
 
@@ -56,15 +58,15 @@ public class Hotel4 extends Hotel {
         if(isGym()){// true del tipo A, false del tipo B
             return 50;
         }
-        return 40;
+        return 30;
     }   
-    
+     
     public int comprobarResto(){
         
         if(getCapResto() < 30){
             return 10;
         }
-        if(getCapResto() > 30 && getCapResto() < 50){
+        if(getCapResto() >= 30 && getCapResto() <= 50){
             return 30;
         }
         
