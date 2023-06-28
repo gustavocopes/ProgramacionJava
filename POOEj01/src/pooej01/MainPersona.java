@@ -17,7 +17,7 @@ package pooej01;
 
 import Entidades.Persona;
 import Servicio.PersonaServicio;
-
+import java.util.InputMismatchException;
 
 /**
  *
@@ -29,31 +29,37 @@ public class MainPersona {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
 
         PersonaServicio ps = new PersonaServicio();
+
+        try {
+            
+            Persona p5;
+//            Persona p1 = ps.crearPersona();
+//            Persona p2 = ps.crearPersona();
+//            Persona p3 = ps.crearPersona();
+//            Persona p4 = ps.crearPersona();
+            ps.esMayorDeEdad(p5);
+
+            boolean[] vectorEdad = new boolean[4];
+            int[] vectorIMC = new int[4];
+
+            vectorEdad[0] = ps.esMayorDeEdad(p1);
+            vectorEdad[1] = ps.esMayorDeEdad(p2);
+            vectorEdad[2] = ps.esMayorDeEdad(p3);
+            vectorEdad[3] = ps.esMayorDeEdad(p4);
+
+            vectorIMC[0] = ps.calcularIMC(p1);
+            vectorIMC[1] = ps.calcularIMC(p2);
+            vectorIMC[2] = ps.calcularIMC(p3);
+            vectorIMC[3] = ps.calcularIMC(p4);
+  
+            promedioPeso(vectorIMC);
+            promedioMayores(vectorEdad);
+        } catch (Exception e) {
+            System.out.println("error: no hay edad " + e.getMessage());
+        }}
         
-
-        Persona p1 = ps.crearPersona();
-        Persona p2 = ps.crearPersona();
-        Persona p3 = ps.crearPersona();
-        Persona p4 = ps.crearPersona();
-
-        boolean[] vectorEdad = new boolean[4];
-        int[] vectorIMC = new int[4];
-
-        vectorEdad[0] = ps.esMayorDeEdad(p1);
-        vectorEdad[1] = ps.esMayorDeEdad(p2);
-        vectorEdad[2] = ps.esMayorDeEdad(p3);
-        vectorEdad[3] = ps.esMayorDeEdad(p4);
-
-        vectorIMC[0] = ps.calcularIMC(p1);
-        vectorIMC[1] = ps.calcularIMC(p2);
-        vectorIMC[2] = ps.calcularIMC(p3);
-        vectorIMC[3] = ps.calcularIMC(p4);
-
-        promedioPeso(vectorIMC);
-        promedioMayores(vectorEdad);}
     
     public static void promedioPeso(int[] vector) {
 
@@ -69,7 +75,6 @@ public class MainPersona {
                 sobrepeso++;
             }
         }
-
 
         System.out.println("\nEl porcentaje de personas que se encuentran ");
         System.out.println("Por debajo de su peso es " + (debajo * 25) + "%");
@@ -98,32 +103,3 @@ public class MainPersona {
 
     }
 }
-    
-    
-    
-
-/** public static void main(String[] args) {
-        PersonaServicio ps = new PersonaServicio();
-
-        PersonaClase[] personas = new PersonaClase[4];
-            int[] imcs = new int[1];
-        for (int i = 0; i < 4; i++) {
-            personas[i]=ps.CrearPersona();
-            imcs[i] = ps.CalcularIMC(personas[i]);
-            ps.esMayorDeEdad(personas[i]);
-            switch (imcs[i]) {
-                case 1:
-                    System.out.println("esta con sobrepeso");
-                    break;
-                case -1:
-                    System.out.println("esta persona esta con bajo peso");
-                    break;
-                default:
-                    System.out.println("sos un looney tunes");
-                    break;
-                    
-            }
-        
-            
-            }
-        }*/

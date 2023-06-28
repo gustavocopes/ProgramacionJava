@@ -58,6 +58,7 @@ public class PersonaServicio {
         if(p1.getEdad() >=18){
             return mayor;
         }
+        
         else{ 
             mayor = false;
             return mayor;
