@@ -1,0 +1,467 @@
+/* 
+1. Obtener los datos completos de los empleados.
+2. Obtener los datos completos de los departamentos.
+3. Listar el nombre de los departamentos.
+4. Obtener el nombre y salario de todos los empleados.
+5. Listar todas las comisiones.
+6. Obtener los datos de los empleados cuyo cargo sea ‘Secretaria’.
+7. Obtener los datos de los empleados vendedores, ordenados por nombre
+alfabéticamente.
+8. Obtener el nombre y cargo de todos los empleados, ordenados por salario de menor a
+mayor.
+
+
+9. Obtener el nombre de o de los jefes que tengan su departamento situado en la ciudad
+de “Ciudad Real”
+	SELECT * FROM departamentos WHERE ciudad = 'CIUDAD REAL'; 
+
+10. Elabore un listado donde para cada fila, figure el alias ‘Nombre’ y ‘Cargo’ para las
+respectivas tablas de empleados.
+	SELECT nombre AS "Nombre", cargo_emp AS "Cargo" 
+	FROM empleados; 
+
+11. Listar los salarios y comisiones de los empleados del departamento 2000, ordenado
+por comisión de menor a mayor.
+	SELECT sal_emp, comision_emp, id_depto
+	FROM empleados
+	WHERE id_depto = 2000
+	ORDER BY comision_emp; 
+
+12. Obtener el valor total a pagar a cada empleado del departamento 3000, que resulta
+de: sumar el salario y la comisión, más una bonificación de 500. Mostrar el nombre del
+empleado y el total a pagar, en orden alfabético.
+	SELECT nombre, sal_emp, comision_emp, (sal_emp+comision_emp+500) AS "Total"
+	ROM empleados
+	WHERE id_depto = 3000
+	ORDER BY nombre; 
+
+13. Muestra los empleados cuyo nombre empiece con la letra J.
+	SELECT nombre
+	FROM empleados
+	WHERE nombre
+	LIKE 'j%'; 
+
+14. Listar el salario, la comisión, el salario total (salario + comisión) y nombre, de aquellos
+empleados que tienen comisión superior a 1000.
+	SELECT nombre, comision_emp, sal_emp, (comision_emp + sal_emp) AS "Total" 
+	FROM empleados
+	WHERE comision_emp > 1000; 
+    
+15. Obtener un listado similar al anterior, pero de aquellos empleados que NO tienen
+comisión.
+	SELECT nombre, comision_emp, sal_emp, (comision_emp + sal_emp) AS "Total" 
+	FROM empleados
+	WHERE comision_emp = 0 ; // puede ser null :) 
+
+
+16. Obtener la lista de los empleados que ganan una comisión superior a su sueldo.
+	SELECT nombre, comision_emp, sal_emp
+	FROM empleados
+	WHERE comision_emp > sal_emp; 
+
+17. Listar los empleados cuya comisión es menor o igual que el 30% de su sueldo.
+	SELECT nombre, comision_emp, sal_emp
+	FROM empleados
+	WHERE comision_emp <= (sal_emp * 0.3); 
+
+18. Hallar los empleados cuyo nombre no contiene la cadena “MA” y oredenar alfabeticamente.
+	SELECT nombre
+	FROM empleados
+	WHERE nombre NOT LIKE '%ma%' ORDER BY nombre; 
+
+
+19. Obtener los nombres de los departamentos que sean “Ventas”, “Investigación” o
+‘Mantenimiento.
+	SELECT *
+	FROM departamentos
+	WHERE nombre_depto IN ("Ventas", "Investigación", "Mantenimiento"); 
+
+20. Ahora obtener el contrario, los nombres de los departamentos que no sean “Ventas” ni
+“Investigación” ni ‘Mantenimiento.
+	SELECT *
+	FROM departamentos
+	WHERE nombre_depto NOT IN ("Ventas", "Investigación", "Mantenimiento"); 
+	
+21. Mostrar el salario más alto de la empresa.
+	SELECT nombre, sal_emp FROM empleados
+	WHERE sal_emp = (SELECT MAX(sal_emp) FROM empleados);
+	
+22. Mostrar el nombre del último empleado de la lista por orden alfabético.
+	SELECT nombre
+	FROM empleados
+	ORDER BY nombre DESC LIMIT 1;
+
+23. Hallar el salario más alto, el más bajo y la diferencia entre ellos.
+	SELECT 
+	MAX(sal_emp) AS "MAX",
+	MIN(sal_emp) AS "MIN",
+	(MAX(sal_emp) - MIN(sal_emp) ) AS "DIFEREN"
+	FROM empleados;
+
+24. Hallar el salario promedio por departamento.
+	SELECT AVG(sal_emp), id_depto
+	FROM empleados
+	GROUP BY id_depto ;
+
+
+Consultas con Having----
+25. Hallar los departamentos que tienen más de tres empleados. Mostrar el número de
+empleados de esos departamentos.
+	SELECT COUNT(*), id_depto
+	FROM empleados
+	GROUP BY id_depto HAVING COUNT(*)>3;
+
+26. Hallar los departamentos que no tienen empleados
+	SELECT COUNT(*), id_depto
+	FROM empleados
+	GROUP BY id_depto HAVING COUNT(*)=0;
+    
+Consulta con Subconsulta-----
+28. Mostrar la lista de los empleados cuyo salario es mayor o igual que el promedio de la
+empresa. Ordenarlo por departamento.
+	SELECT nombre, sal_emp
+	FROM empleados
+	WHERE sal_emp >= (SELECT AVG(sal_emp) FROM empleados)
+	ORDER BY id_depto;
+
+	eje2.......................................................$$$$$$$$
+/*Abrir el script de la base de datos llamada “tienda.sql” y ejecutarlo para crear sus tablas e
+insertar datos en las mismas. A continuación, generar el modelo de entidad relación. Deberá
+obtener un diagrama de entidad relación igual al que se muestra a continuación:
+
+A continuación, se deben realizar las siguientes consultas sobre la base de datos:
+
+1. Lista el nombre de todos los productos que hay en la tabla producto.
+	SELECT nombre FROM producto;
+
+
+2. Lista los nombres y los precios de todos los productos de la tabla producto.
+	SELECT nombre, precio FROM producto;
+
+3. Lista todas las columnas de la tabla producto.
+	SELECT * FROM producto;
+
+4. Lista los nombres y los precios de todos los productos de la tabla producto, redondeando
+el valor del precio.
+	SELECT nombre, ROUND(precio) FROM producto;
+
+5. Lista el código de los fabricantes que tienen productos en la tabla producto.
+	SELECT codigo_fabricante FROM producto;
+
+6. Lista el código de los fabricantes que tienen productos en la tabla producto, sin mostrar
+los repetidos.
+	SELECT codigo_fabricante FROM producto GROUP BY codigo_fabricante;
+
+7. Lista los nombres de los fabricantes ordenados de forma ascendente.
+	SELECT nombre FROM fabricante ORDER BY nombre ;
+
+8. Lista los nombres de los productos ordenados en primer lugar por el nombre de forma
+ascendente y en segundo lugar por el precio de forma descendente.
+	SELECT nombre, precio FROM producto ORDER BY nombre, precio DESC;
+
+9. Devuelve una lista con las 5 primeras filas de la tabla fabricante.
+	SELECT * FROM fabricante LIMIT 5;
+
+10. Lista el nombre y el precio del producto más barato. (Utilice solamente las cláusulas
+ORDER BY y LIMIT)
+	SELECT nombre, precio FROM producto ORDER BY precio LIMIT 1 ;
+
+
+11. Lista el nombre y el precio del producto más caro. (Utilice solamente las cláusulas ORDER
+BY y LIMIT)
+	SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1 ;
+
+12. Lista el nombre de los productos que tienen un precio menor o igual a $120.
+	SELECT nombre FROM producto WHERE precio <= 120 ;
+
+13. Lista todos los productos que tengan un precio entre $60 y $200. Utilizando el operador
+BETWEEN.
+	SELECT * FROM producto WHERE precio BETWEEN 60 AND 200 ;
+
+14. Lista todos los productos donde el código de fabricante sea 1, 3 o 5. Utilizando el operador IN.
+	SELECT * FROM producto WHERE codigo_fabricante IN (1,3,5);
+
+15. Devuelve una lista con el nombre de todos los productos que contienen la cadena Portátil
+en el nombre.
+	SELECT nombre FROM producto WHERE nombre LIKE '%Portátil%';
+	-- Portátil% = empieza
+	-- %Portátil = termina
+	-- %Portátil% = contiene
+
+
+Consultas Multitabla------
+1. Devuelve una lista con el código del producto, nombre del producto, código del fabricante
+y nombre del fabricante, de todos los productos de la base de datos.
+	SELECT producto.codigo, producto.nombre, fabricante.codigo, fabricante.nombre FROM fabricante 
+    RIGHT JOIN producto ON fabricante.codigo = producto.codigo_fabricante;
+
+2. Devuelve una lista con el nombre del producto, precio y nombre de fabricante de todos
+los productos de la base de datos. Ordene el resultado por el nombre del fabricante, por
+orden alfabético.
+	SELECT  producto.nombre, producto.precio, fabricante.nombre 
+	FROM fabricante RIGHT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	ORDER BY fabricante.nombre;
+
+3. Devuelve el nombre del producto, su precio y el nombre de su fabricante, del producto
+más barato.
+	SELECT  producto.nombre, producto.precio, fabricante.nombre 
+	FROM fabricante RIGHT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	ORDER BY producto.precio LIMIT 1;
+
+4. Devuelve una lista de todos los productos del fabricante Lenovo.
+	SELECT  * FROM fabricante RIGHT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	WHERE fabricante.nombre = "Lenovo";
+
+5. Devuelve una lista de todos los productos del fabricante Crucial que tengan un precio
+mayor que $200.
+	SELECT * FROM fabricante RIGHT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	WHERE fabricante.nombre = "Crucial" && precio > 200;
+
+6. Devuelve un listado con todos los productos de los fabricantes Asus, Hewlett-Packard.
+Utilizando el operador IN.
+	SELECT * FROM fabricante RIGHT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	WHERE fabricante.nombre IN ("Asus", "Hewlett-Packard");
+
+7. Devuelve un listado con el nombre de producto, precio y nombre de fabricante, de todos
+los productos que tengan un precio mayor o igual a $180. Ordene el resultado en primer
+lugar por el precio (en orden descendente) y en segundo lugar por el nombre (en orden
+ascendente).
+	SELECT producto.nombre, producto.precio, fabricante.nombre
+	FROM fabricante JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante 
+	WHERE producto.precio >= 180 ORDER BY  producto.precio DESC , fabricante.nombre ;
+
+
+
+Consultas Multitabla---------
+Resuelva todas las consultas utilizando las cláusulas LEFT JOIN y RIGHT JOIN.
+
+1. Devuelve un listado de todos los fabricantes que existen en la base de datos, junto con los
+productos que tiene cada uno de ellos. El listado deberá mostrar también aquellos
+fabricantes que no tienen productos asociados.
+	SELECT fabricante.nombre, producto.nombre
+	FROM fabricante LEFT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante;
+
+2. Devuelve un listado donde sólo aparezcan aquellos fabricantes que no tienen ningún
+producto asociado.
+	SELECT fabricante.nombre, producto.nombre
+	FROM fabricante LEFT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante
+	WHERE producto.nombre IS NULL;
+
+Subconsultas (En la cláusula WHERE)
+Con operadores básicos de comparación
+
+1. Devuelve todos los productos del fabricante Lenovo. (Sin utilizar INNER JOIN).
+	SELECT * FROM producto
+	WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = 'Lenovo' ) ;
+
+
+2. Devuelve todos los datos de los productos que tienen el mismo precio que el producto
+más caro del fabricante Lenovo. (Sin utilizar INNER JOIN).
+	SELECT * FROM producto
+	WHERE precio = (SELECT MAX(precio) FROM producto WHERE codigo_fabricante= (SELECT codigo FROM fabricante WHERE nombre = 'Lenovo'  ))  ;
+
+3. Lista el nombre del producto más caro del fabricante Lenovo.
+	
+
+
+4. Lista todos los productos del fabricante Asus que tienen un precio superior al precio
+medio de todos sus productos.
+Subconsultas con IN y NOT IN
+1. Devuelve los nombres de los fabricantes que tienen productos asociados. (Utilizando IN o
+NOT IN).
+2. Devuelve los nombres de los fabricantes que no tienen productos asociados. (Utilizando
+IN o NOT IN).
+Subconsultas (En la cláusula HAVING)
+1. Devuelve un listado con todos los nombres de los fabricantes que tienen el mismo número
+de productos que el fabricante Lenovo.*/
+
+	6/7/23 eje2-2
+
+/*Abrir el script de la base de datos llamada “tienda.sql” y ejecutarlo para crear sus tablas e
+insertar datos en las mismas. A continuación, generar el modelo de entidad relación. Deberá
+obtener un diagrama de entidad relación igual al que se muestra a continuación:
+
+A continuación, se deben realizar las siguientes consultas sobre la base de datos:
+
+1. Lista el nombre de todos los productos que hay en la tabla producto.
+-- SELECT nombre FROM producto;
+
+2. Lista los nombres y los precios de todos los productos de la tabla producto.
+-- SELECT nombre, precio FROM producto; 2
+
+3. Lista todas las columnas de la tabla producto.
+SELECT * FROM producto;
+
+4. Lista los nombres y los precios de todos los productos de la tabla producto, redondeando
+el valor del precio.
+	SELECT nombre, round(precio) AS "precio" FROM producto; 
+    
+    
+5. Lista el código de los fabricantes que tienen productos en la tabla producto.
+	SELECT codigo_fabricante FROM producto;
+
+6. Lista el código de los fabricantes que tienen productos en la tabla producto, sin mostrar
+los repetidos.
+	SELECT distinct(codigo_fabricante) FROM producto; 1 
+	SELECT codigo_fabricante FROM producto GROUP BY codigo_fabricante; 2 
+
+
+7. Lista los nombres de los fabricantes ordenados de forma ascendente.
+	SELECT nombre FROM fabricante ORDER BY nombre;
+    
+    8. Lista los nombres de los productos ordenados en primer lugar por el nombre de forma
+ascendente y en segundo lugar por el precio de forma descendente.
+	SELECT nombre, precio FROM producto ORDER BY nombre, precio DESC;
+
+9. Devuelve una lista con las 5 primeras filas de la tabla fabricante.
+	SELECT * FROM fabricante LIMIT 5;
+
+10. Lista el nombre y el precio del producto más barato. (Utilice solamente las cláusulas
+ORDER BY y LIMIT)
+	SELECT nombre, precio FROM producto ORDER BY precio LIMIT 1;
+
+11. Lista el nombre y el precio del producto más caro. (Utilice solamente las cláusulas ORDER
+BY y LIMIT)
+	SELECT nombre, precio FROM producto ORDER BY precio DESC LIMIT 1;
+
+
+12. Lista el nombre de los productos que tienen un precio menor o igual a $120.
+	SELECT precio FROM producto WHERE precio <= 120;
+    
+ 
+13. Lista todos los productos que tengan un precio entre $60 y $200. Utilizando el operador
+BETWEEN.
+	SELECT * FROM producto WHERE precio BETWEEN 60 AND 200;
+
+14. Lista todos los productos donde el código de fabricante sea 1, 3 o 5. Utilizando el operador
+IN.
+	SELECT * FROM producto WHERE codigo_fabricante IN (1,3,5);
+
+15. Devuelve una lista con el nombre de todos los productos que contienen la cadena Portátil
+en el nombre.
+	SELECT * FROM producto WHERE nombre LIKE '%Portátil%';
+   
+Consultas Multitabla
+1. Devuelve una lista con el código del producto, nombre del producto, código del fabricante
+y nombre del fabricante, de todos los productos de la base de datos.
+	SELECT producto.codigo, producto.nombre, fabricante.codigo, fabricante.nombre
+	FROM fabricante RIGHT JOIN producto ON fabricante.codigo =  producto.codigo_fabricante;
+
+
+2. Devuelve una lista con el nombre del producto, precio y nombre de fabricante de todos
+los productos de la base de datos. Ordene el resultado por el nombre del fabricante, por
+orden alfabético.
+	SELECT producto.precio, producto.nombre, fabricante.nombre
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	ORDER BY fabricante.nombre;
+
+3. Devuelve el nombre del producto, su precio y el nombre de su fabricante, del producto
+más barato.
+	SELECT producto.precio, producto.nombre, fabricante.nombre
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	ORDER BY producto.precio LIMIT 1;
+
+4. Devuelve una lista de todos los productos del fabricante Lenovo.
+	SELECT *
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	WHERE fabricante.nombre = "Lenovo";
+
+	SELECT *
+	FROM producto
+	WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo");
+
+
+
+5. Devuelve una lista de todos los productos del fabricante Crucial que tengan un precio
+mayor que $200.
+	SELECT *
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	WHERE fabricante.nombre = "Crucial" && producto.precio > 200; 
+    
+ 6. Devuelve un listado con todos los productos de los fabricantes Asus, Hewlett-Packard.
+Utilizando el operador IN.
+	SELECT *
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	WHERE fabricante.nombre IN ("Asus", "Hewlett-Packard") ; 
+
+7. Devuelve un listado con el nombre de producto, precio y nombre de fabricante, de todos
+los productos que tengan un precio mayor o igual a $180. Ordene el resultado en primer
+lugar por el precio (en orden descendente) y en segundo lugar por el nombre (en orden
+ascendente)
+	SELECT producto.precio, producto.nombre, fabricante.nombre
+	FROM fabricante RIGHT JOIN producto 
+	ON fabricante.codigo = producto.codigo_fabricante
+	WHERE producto.precio >= 180 ORDER BY precio DESC , producto.nombre  ; 
+    
+ Consultas Multitabla
+Resuelva todas las consultas utilizando las cláusulas LEFT JOIN y RIGHT JOIN.
+
+1. Devuelve un listado de todos los fabricantes que existen en la base de datos, junto con los
+productos que tiene cada uno de ellos. El listado deberá mostrar también aquellos
+fabricantes que no tienen productos asociados.
+	SELECT * FROM fabricante LEFT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante;
+
+2. Devuelve un listado donde sólo aparezcan aquellos fabricantes que no tienen ningún
+producto asociado.
+	SELECT fabricante.nombre FROM fabricante LEFT JOIN producto
+	ON fabricante.codigo = producto.codigo_fabricante WHERE codigo_fabricante IS NULL ; 
+    
+Subconsultas (En la cláusula WHERE)
+Con operadores básicos de comparación
+
+1. Devuelve todos los productos del fabricante Lenovo. (Sin utilizar INNER JOIN).
+	SELECT * FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo") ;
+
+2. Devuelve todos los datos de los productos que tienen el mismo precio que el producto
+más caro del fabricante Lenovo. (Sin utilizar INNER JOIN).
+	SELECT * FROM producto WHERE precio = 
+    (SELECT MAX(precio) FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo"));
+
+3. Lista el nombre del producto más caro del fabricante Lenovo.
+	SELECT nombre, precio FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo") ORDER BY precio DESC LIMIT 1;
+	SELECT MAX(precio) FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo") LIMIT 1;
+    
+*/
+
+
+SELECT * FROM producto JOIN fabricante 
+ON producto.codigo_fabricante = fabricante.codigo 
+GROUP BY fabricante.nombre
+HAVING  COUNT(*) = (SELECT COUNT(*) FROM producto WHERE codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Lenovo") );
+
+/*
+
+4. Lista todos los productos del fabricante Asus que tienen un precio superior al precio
+medio de todos sus productos.
+	SELECT * FROM producto WHERE  codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Asus") && precio > (SELECT AVG(precio) FROM producto WHERE  codigo_fabricante = (SELECT codigo FROM fabricante WHERE nombre = "Asus"));
+
+Subconsultas con IN y NOT IN
+1. Devuelve los nombres de los fabricantes que tienen productos asociados. (Utilizando IN o
+NOT IN).
+	SELECT nombre FROM fabricante WHERE codigo IN (SELECT codigo_fabricante FROM producto );
+
+2. Devuelve los nombres de los fabricantes que no tienen productos asociados. (Utilizando
+IN o NOT IN).
+	SELECT nombre FROM fabricante WHERE codigo NOT IN (SELECT codigo_fabricante FROM producto );
+
+
+Subconsultas (En la cláusula HAVING)
+1. Devuelve un listado con todos los nombres de los fabricantes que tienen el mismo número
+de productos que el fabricante Lenovo.
+	
+*/
+*/

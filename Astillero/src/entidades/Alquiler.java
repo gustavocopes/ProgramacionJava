@@ -114,7 +114,7 @@ public class Alquiler {
             default: System.out.println("Ingrese un opación válida");
             
         }
-    }while(opc > 4);
+    }while(opc != 4 );
     }
 
     /*Un alquiler se calcula multiplicando el número de días de ocupación (calculado con la fecha de
@@ -136,7 +136,7 @@ multiplicando por 10 los metros de eslora).*/
         int annioF = sc.nextInt();
        fechaInicio = LocalDate.of(annioI, mesI, diaI);        
        fechaFin = LocalDate.of(annioF, mesF, diaF);
-        System.out.println("Fue alquilado por " + ChronoUnit.DAYS.between(fechaInicio, fechaFin ) + "dias");
+        System.out.println("Fue alquilado por " + ChronoUnit.DAYS.between(fechaInicio, fechaFin ) + " días");
        
        return (ChronoUnit.DAYS.between(fechaInicio, fechaFin) * modulo);
     }
