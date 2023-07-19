@@ -28,8 +28,8 @@ public abstract class DAO {
     protected void conectarBase() throws ClassNotFoundException {
     try {
             Class.forName("com.mysql.jdbc.Driver");
-            String url = "jdbc:mysql://localhost:3306/" + DATABASE + "?useSSL = False";
-            Connection con = (Connection) DriverManager.getConnection(url, USER, PASS);
+            String url = "jdbc:mysql://localhost:3306/" + DATABASE + "?useSSL=false";
+            conexion = (Connection) DriverManager.getConnection(url, USER, PASS);
         } catch (SQLException ex) {
             Connection con = null;
             ex.printStackTrace();
@@ -67,11 +67,12 @@ public abstract class DAO {
             desconectarBase();
         }
 }
-    protected void consultarBase(String sql) throws Exception{
+    protected ResultSet consultarBase(String sql) throws Exception{
         try{
             conectarBase();
-            sentencia = conexion.createStatement(sql);
+            sentencia = conexion.createStatement();
             resultado = sentencia.executeQuery(sql);
+            return resultado;
         }catch(Exception e){
             throw e;
         }

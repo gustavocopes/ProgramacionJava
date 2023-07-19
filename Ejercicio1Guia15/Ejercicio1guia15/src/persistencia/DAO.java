@@ -8,16 +8,15 @@ public abstract class DAO {
     protected Statement stmt = null;
     protected ResultSet rs = null;
 
-    private final String URL = "jdbc:mysql://localhost:3306/tienda?useSSL=false";
+    private final String URL = "jdbc:mysql://localhost:3306/tienda";
     private final String USER = "root";
     private final String PASSWORD = "root";
     private final String DRIVER = "com.mysql.jdbc.Driver";
 
     protected void conectarBase() throws SQLException, ClassNotFoundException {
         try {
-            Class.forName(DRIVER);
             conn = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             throw ex;
         }
     }

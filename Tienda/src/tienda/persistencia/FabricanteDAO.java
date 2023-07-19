@@ -9,13 +9,14 @@ package tienda.persistencia;
  *
  * @author gcopes
  */
-public class EntidadDaoExt {
+public class FabricanteDAO extends DAO {
     
-    
-       
-    @Override
-    conectarBase();
-   String sql = "select nombre from productos";
-    
-   while(){
+     public void insertarFabricante() throws Exception{
+        try{
+            String sql = "INSERT INTO fabricante VALUES(10,'Dell')";
+            insertarModificarEliminar(sql);
+            }catch(Exception e){
+                    throw e;
+                    }
+        }
 }

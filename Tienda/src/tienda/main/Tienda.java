@@ -5,13 +5,17 @@
  */
 package tienda.main;
 
+import tienda.servicios.productoService;
+
 /**
  *
  * @author gcopes
  */
 public class Tienda {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        productoService ps = new productoService();
         
+        ps.menu();
     }
 }
