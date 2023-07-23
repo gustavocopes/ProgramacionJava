@@ -20,6 +20,7 @@ public class AutorServicio {
 .createEntityManager();
     
     public Autor persistirAutor(int id, String nombre){
+        try{
         Autor aut = new Autor(id, nombre, true);
         
         em.getTransaction().begin();
@@ -27,6 +28,9 @@ public class AutorServicio {
         em.persist(aut);
         em.getTransaction().commit();
         return aut;
+        }catch(Exception e){
+            throw e;
+        }
     }
     
     public void buscarAutor(String nombre){

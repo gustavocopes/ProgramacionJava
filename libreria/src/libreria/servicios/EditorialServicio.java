@@ -19,6 +19,7 @@ public class EditorialServicio {
 .createEntityManager();
     
       public Editorial persistirEditorial(int id, String nombre){
+          try{
         Editorial ed = new Editorial(id, nombre,true);
        
         em.getTransaction().begin();
@@ -26,5 +27,8 @@ public class EditorialServicio {
         em.persist(ed);
         em.getTransaction().commit();
         return ed;
+          }catch(Exception e){
+              throw e;
+          }
     }
 }

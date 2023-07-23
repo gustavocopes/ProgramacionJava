@@ -24,6 +24,7 @@ public class LibroServicio {
       public void persistirLibro(long isbn, String titulo, int anio, int ejempP, int ejemp, Autor aut, Editorial ed){
           
         Libro lib = new Libro();
+        try{
         lib.setIsbn(isbn);
        lib.setTitulo(titulo);
        lib.setAnio(anio);
@@ -36,18 +37,32 @@ public class LibroServicio {
         
         em.persist(lib);
         em.getTransaction().commit();
+        }catch(Exception e){
+            throw e;
+        }
     }
       
-      public void buscarLibro(long isbn){
+      public Libro buscarLibro(long isbn){
           
           Libro lib = em.find(Libro.class, isbn);
           System.out.println(lib);
-          
+          return lib;
       }
       
       public void busarLibroTitulo(String tit){
           
           List<Libro> lib =  em.createQuery("SELECT a FROM Libro a WHERE a.titulo LIKE :titulo").setParameter("titulo", tit).getResultList();
+          System.out.println(lib);
+      }
+      
+      public void buscarLibroAutor(String escritor){
+          
+          List<Libro> lib = em.createQuery("Select a FROM Libro a Where a.autor.nombre LIKE :autor").setParameter("autor", escritor).getResultList();
+          System.out.println(lib);
+      }
+      public void buscarLibroEditorial(String ed){
+          
+          List<Libro> lib = em.createQuery("SELECT a FROM Libro a WHERE a.editorial.nombre LIke :edit").setParameter("edit", ed).getResultList();
           System.out.println(lib);
       }
 }
