@@ -48,9 +48,9 @@ public class main {
                 opc = sc.nextInt();
                 
                 switch(opc){
-                    case 1:ls.persistirLibro(1,"Cthulu",1905,1,5,as.persistirAutor(1, "Lovecraft"), es.persistirEditorial(1, "Planete"));
-                     ls.persistirLibro(2,"Principito",1930,3,10,as.persistirAutor(5,"Exupery"), es.persistirEditorial(3,"Sudamericana"));
-                     ls.persistirLibro(3,"Persepolis",1988,0,2,as.persistirAutor(12, "Satrapi"), es.persistirEditorial(8, "Norma"));
+                    case 1:ls.persistirLibro(1,"Cthulu",1905,1,5,as.persistirAutor(78, "Lovecraft"), es.persistirEditorial(42, "Planete"));
+                     //ls.persistirLibro(2,"Principito",1930,3,10,as.persistirAutor(5,"Exupery"), es.persistirEditorial(3,"Sudamericana"));
+                     //ls.persistirLibro(3,"Persepolis",1988,0,2,as.persistirAutor(12, "Satrapi"), es.persistirEditorial(8, "Norma"));
                         break;
                     case 2: as.buscarAutor("Pepe");
                         break;
@@ -60,7 +60,7 @@ public class main {
                         break;
                     case 5: ls.buscarLibroAutor("Satrapi");
                         break;
-                    case 6: ps.crearPrestamo(1, "12/5/6", 20/5/06, ls.buscarLibro(3),  cs.crearCliente(1, 44685, "Juan", "Perez","4656"));//hay que hacer una coleccion para cargar el libro que quiero?
+                    case 6: //ps.crearPrestamo(1, "12/5/6", 20/5/06, ls.buscarLibro(3),  cs.crearCliente(1, 44685, "Juan", "Perez","4656"));//hay que hacer una coleccion para cargar el libro que quiero?
                         break;                   
                     case 7: ls.buscarLibroEditorial("Sudamericana");
                         break;                   

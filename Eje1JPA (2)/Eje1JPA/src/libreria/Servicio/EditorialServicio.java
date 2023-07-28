@@ -1,21 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package libreria.servicios;
+package libreria.Servicio;
+
 
 import java.util.Scanner;
-
-import libreria.entidades.Editorial;
+import libreria.Entidad.Editorial;
 import libreria.persistencia.EditorialDAO;
 
-/**
- *
- * @author gcopes
- */
 public class EditorialServicio {
-       private final EditorialDAO DAO;
+
+    private final EditorialDAO DAO;
 
     Scanner read = new Scanner(System.in);
 
